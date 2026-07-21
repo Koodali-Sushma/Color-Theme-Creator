@@ -64,3 +64,9 @@ h6 {
 #__next {
   isolation: isolate;
 }
+
+.color-List {
+  display: flex;
+  list-style-type: none;
+  flex-direction: column;
+}
