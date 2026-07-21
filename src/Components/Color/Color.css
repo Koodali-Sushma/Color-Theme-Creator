@@ -1,11 +1,13 @@
 .color-card {
   margin: 0px 10px;
   padding: 5px;
+  border: 2px solid black;
+  border-radius: 6px;
+  justify-content: center;
+  width: 50%;
+  align-items: center;
 }
-
-.color-card-headline {
-  display: inline;
-  padding: 2px 6px;
-  background: black;
-  color: white;
+.color-card:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
 }
