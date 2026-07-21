@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Caveat:wght@500;700&family=Cabin+Sketch:wght@400;700&display=swap");
 /* This is a modern css reset found here:
 https://www.joshwcomeau.com/css/custom-css-reset/
 */
@@ -9,6 +10,8 @@ https://www.joshwcomeau.com/css/custom-css-reset/
 *::before,
 *::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 /*
   2. Remove default margin
@@ -24,6 +27,7 @@ https://www.joshwcomeau.com/css/custom-css-reset/
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  overflow: hidden; /* Prevents global page scrollbars */
 }
 /*
   5. Improve media defaults
@@ -65,8 +69,62 @@ h6 {
   isolation: isolate;
 }
 
+/* Parent container filling the entire viewport */
+.split-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+/* Styling applied to both panels */
+.panel {
+  flex: 1; /* Each panel takes up equal (50%) width */
+  height: 100%; /* Fills parent height */
+  overflow-y: auto; /* Enables independent vertical scrolling */
+  padding: 2rem;
+}
+/* Custom background colors or styling per panel */
+.panel-left {
+  background-color: #95fce1;
+  border-right: 2px solid #dcdfe5;
+  font-family: "Comic Sans MS";
+}
+
+.panel-right {
+  background-color: #fdd688;
+  font-family: "Chalkduster", "Cabin Sketch", "Comic Sans MS", cursive;
+  font-size: 1.2rem;
+}
+
 .color-List {
   display: flex;
   list-style-type: none;
   flex-direction: column;
+  border: 2px dashed rgb(10, 11, 129);
+  border-radius: 6px;
+  background-color: rgb(248, 181, 181);
+  justify-content: center;
+}
+@media (max-width: 768px) {
+  /* Allow the parent container to scroll naturally on mobile */
+  body {
+    overflow: auto;
+  }
+
+  .split-container {
+    flex-direction: column;
+    height: auto; /* Let content determine height on mobile */
+  }
+
+  .panel {
+    width: 100%;
+    height: auto;
+    overflow-y: visible; /* Remove independent scrollbars on mobile */
+  }
+}
+.theme-creator-form {
+  border: 2px solid black;
+  border-radius: 6px;
+  background-color: rgb(21, 59, 12);
+  color: whitesmoke;
+  align-items: center;
 }
