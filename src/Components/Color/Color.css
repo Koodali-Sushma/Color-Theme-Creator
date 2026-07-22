@@ -13,3 +13,22 @@
   transform: scale(1.05);
   transition: transform 0.3s ease-in-out;
 }
+
+.color-card-highlight {
+  font-size: 2rem;
+}
+
+.color-card-button {
+  background-color: dimgray;
+  color: white;
+  margin-left: 1%;
+}
+
+.color-card-button--delete {
+  font-size: 15px;
+  width: 170px;
+  margin-left: 1%;
+}
+.color-card-button--cancel {
+  margin-left: 1%;
+}

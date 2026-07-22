@@ -1,6 +1,20 @@
 import "./Color.css";
+import { useState } from "react";
 
-export default function Color({ color }) {
+export default function Color({ color, onDeleteColor }) {
+  const [isConfirming, setIsConfirming] = useState(false);
+
+  function handleDeleteClick() {
+    setIsConfirming(true);
+  }
+
+  function handleCancelDelete() {
+    setIsConfirming(false);
+  }
+
+  function handleConfirmDelete() {
+    onDeleteColor(color.id);
+  }
   return (
     <article>
       <div
@@ -12,6 +26,35 @@ export default function Color({ color }) {
         <br />
         Contrast-Text:
         <span className="colorcard__contrastText">{color.contrastText}</span>
+        <br />
+        {/* Conditional rendering for delete confirmation */}
+        {isConfirming ? (
+          <div className="color-card-confirm">
+            <p className="color-card-highlight">Are you sure?</p>
+            <button
+              type="button"
+              className="color-card-button color-card-button--cancel"
+              onClick={handleCancelDelete}
+            >
+              CANCEL
+            </button>
+            <button
+              type="button"
+              className="color-card-button color-card-button--delete"
+              onClick={handleConfirmDelete}
+            >
+              CONFIRM DELETE
+            </button>
+          </div>
+        ) : (
+          <button
+            type="button"
+            className="color-card-button"
+            onClick={handleDeleteClick}
+          >
+            DELETE
+          </button>
+        )}
       </div>
       <br />
     </article>

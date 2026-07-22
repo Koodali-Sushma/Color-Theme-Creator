@@ -158,3 +158,8 @@ li:first-child {
     background-position: 200% center;
   }
 }
+.empty-state-message {
+  font-size: 1.1rem;
+  margin-top: 2rem;
+  color: #f45454;
+}

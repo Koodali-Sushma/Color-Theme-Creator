@@ -17,20 +17,33 @@ function App() {
       ...inputEntries,
     ]);
   }
-  console.log("inputEntries", inputEntries);
+
+  function handleDeleteTheme(colorId) {
+    setInputEntries((storedColors) =>
+      storedColors.filter((color) => color.id !== colorId),
+    );
+  }
   return (
     <>
       <div className="split-container">
         {/* Left Independent Panel */}
         <section className="panel panel-left">
           <h1 className="rainbow-text">Theme List</h1>
-          <ul className="color-List">
-            {inputEntries.map((color) => (
-              <li key={color.id}>
-                <Color color={color} />
-              </li>
-            ))}
-          </ul>
+          {/* Check if there are any colors remaining */}
+          {inputEntries.length === 0 ? (
+            <p className="empty-state-message">
+              No colors left in this theme!
+              <br /> Add a new color using the form.
+            </p>
+          ) : (
+            <ul className="color-List">
+              {inputEntries.map((color) => (
+                <li key={color.id}>
+                  <Color color={color} onDeleteColor={handleDeleteTheme} />
+                </li>
+              ))}
+            </ul>
+          )}
         </section>
         {/* Right Independent Panel */}
         <section className="panel panel-right">
