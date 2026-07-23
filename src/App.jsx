@@ -2,12 +2,25 @@ import { initialColors } from "./lib/colors";
 import Color from "./Components/Color/Color";
 import "./App.css";
 import ColorForm from "./Components/ColorForm/ColorForm";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 
 function App() {
-  //const [textOfButtonClicked, setTextOfButtonClicked] = useState("");
-  const [inputEntries, setInputEntries] = useState(initialColors);
+  const [inputEntries, setInputEntries] = useState(() => {
+    const savedColors = localStorage.getItem("colors");
+    if (savedColors) {
+      try {
+        return JSON.parse(savedColors);
+      } catch (error) {
+        console.error("Failed to parse colors from localStorage", error);
+      }
+    }
+    return initialColors;
+  });
+  //Save to localStorage whenever inputEntries changes (adds, edits, deletes)
+  useEffect(() => {
+    localStorage.setItem("colors", JSON.stringify(inputEntries));
+  }, [inputEntries]);
 
   function handleAddTheme(newTheme) {
     setInputEntries([
