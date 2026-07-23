@@ -6,6 +6,7 @@ import { useState } from "react";
 import { nanoid } from "nanoid";
 
 function App() {
+  //const [textOfButtonClicked, setTextOfButtonClicked] = useState("");
   const [inputEntries, setInputEntries] = useState(initialColors);
 
   function handleAddTheme(newTheme) {
@@ -16,6 +17,15 @@ function App() {
       },
       ...inputEntries,
     ]);
+  }
+
+  // Function to UPDATE an existing color by ID
+  function handleUpdateColor(updatedColor) {
+    setInputEntries((prevEntries) =>
+      prevEntries.map((color) =>
+        color.id === updatedColor.id ? updatedColor : color,
+      ),
+    );
   }
 
   function handleDeleteTheme(colorId) {
@@ -39,7 +49,11 @@ function App() {
             <ul className="color-List">
               {inputEntries.map((color) => (
                 <li key={color.id}>
-                  <Color color={color} onDeleteColor={handleDeleteTheme} />
+                  <Color
+                    color={color}
+                    onDeleteColor={handleDeleteTheme}
+                    onUpdateColor={handleUpdateColor}
+                  />
                 </li>
               ))}
             </ul>
@@ -48,7 +62,7 @@ function App() {
         {/* Right Independent Panel */}
         <section className="panel panel-right">
           <h1>Theme Creator</h1>
-          <ColorForm onAddTheme={handleAddTheme} />
+          <ColorForm onAddTheme={handleAddTheme} buttonText="ADD" />
         </section>
       </div>
     </>

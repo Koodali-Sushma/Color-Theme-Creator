@@ -2,6 +2,7 @@ import "./ColorForm.css";
 import ColorInput from "../ColorInput/ColorInput";
 
 export default function ColorForm({
+  buttonText = "ADD",
   onAddTheme,
   defaultValue = {
     hexValue: "#595959",
@@ -19,13 +20,15 @@ export default function ColorForm({
       hexValue: data.hexValue,
       contrastText: data.contrastText,
     };
-    onAddTheme(newEntry);
+    onAddTheme(newEntry, buttonText);
   }
 
   return (
     <form className="theme-creator-form" onSubmit={handleSubmit}>
       <fieldset>
-        <legend>Create your own theme</legend>
+        <legend>
+          {buttonText === "UPDATE" ? "Edit Color" : "Create your own theme"}
+        </legend>
         <label htmlFor="role">Role:</label>
         <input
           type="text"
@@ -43,7 +46,12 @@ export default function ColorForm({
           defaultValue={defaultValue.contrastText}
         />
         <br />
-        <button type="submit">Add</button>
+        <button
+          className={buttonText === "UPDATE" ? "color-card-button" : ""}
+          type="submit"
+        >
+          {buttonText}
+        </button>
       </fieldset>
     </form>
   );
