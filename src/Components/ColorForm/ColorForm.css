@@ -1,0 +1,61 @@
+.theme-creator-form {
+  border: 4px solid rgb(7, 7, 7);
+  border-radius: 6px;
+  background-color: rgb(21, 59, 12);
+  color: whitesmoke;
+  align-items: center;
+  margin-top: 5%;
+}
+form:hover {
+  background-color: rgb(50, 86, 30);
+}
+legend {
+  margin-top: 4%;
+}
+fieldset {
+  width: 80%;
+  margin-left: 10%;
+  margin-bottom: 5%;
+  align-content: center;
+}
+
+input {
+  margin-left: 10px;
+  margin-top: 5%;
+  width: 150px;
+}
+label {
+  margin-left: 2%;
+}
+button {
+  text-align: center;
+  width: 150px;
+  align-items: center;
+  margin-left: 10%;
+  margin-top: 30px;
+  margin-bottom: 5%;
+  animation: bounceAnim 0.6s ease;
+  box-shadow: 1px 4px 3px #9a9b9a;
+  background-color: #2df44e;
+  border-radius: 4px;
+}
+button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #047857;
+}
+/* Keyframe animation for bounce */
+@keyframes bounceAnim {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-20px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  70% {
+    transform: translateY(-12px);
+  }
+}
